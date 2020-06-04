@@ -10,10 +10,7 @@ RUN apt-get install -y vim && apt-get install -y sudo
 RUN echo "root:root" | chpasswd
 RUN adduser root sudo
 
-RUN sudo ifconfig lo 192.168.0.12 netmask 255.255.255.0 
-
 USER postgres
-RUN echo "postgres:postgres" | chpasswd
 
 RUN    /etc/init.d/postgresql start &&\
     psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';" &&\
